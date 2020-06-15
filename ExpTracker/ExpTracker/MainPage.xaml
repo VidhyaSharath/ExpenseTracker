@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Monthly Expense Tracker"
+             x:Class="ExpTracker.MainPage">
+
+
+
+    <StackLayout > <!--BackgroundColor="Bisque"-->
+        <!-- Place new controls here -->
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        </Grid>
+
+        <Label Text="Pick a Month " Grid.Row="0"/>
+        <DatePicker  IsEnabled="True" Format="MM-yyyy" x:Name="MonthYear" DateSelected="MonthYear_DateSelected" />
+
+        <Label Text="Monthly Budget ($): " Grid.Row="1"/>
+        <Editor x:Name="budgetEditor" 
+                Placeholder="Enter your monthly budget here"
+                HeightRequest="50"
+                Grid.Row="2"
+                Keyboard="Numeric"/> <!-- Validation added so that user can only enter digits-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Text="Save and continue" Clicked="OnSaveButtonClicked"/>
+            <Button Text="Delete" Grid.Column="1" Clicked="OnDeleteButtonClicked"/>
+        </Grid>
+    </StackLayout>
+
+</ContentPage>

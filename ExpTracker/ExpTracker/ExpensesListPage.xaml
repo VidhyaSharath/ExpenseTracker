@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="{Binding MonthYear}"
+             x:Class="ExpTracker.ExpensesListPage">
+
+
+
+        <StackLayout >
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Label HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
+                   Text= "Budget Spent ($)" TextColor="Blue" FontSize="Medium" />
+
+            <!--<Label Grid.Column ="1" HorizontalOptions="FillAndExpand" VerticalOptions ="FillAndExpand" 
+                   Text="Budget Balance ($)" TextColor="Blue" FontSize="Medium" /> -->
+        </Grid>
+
+        <!--  <Label x:Name="Expense" FontSize="Large" BackgroundColor="Blue" />
+            <Label x:Name="Budget" FontSize="Large" BackgroundColor="Blue"/> -->
+
+            <ListView x:Name="listView"  
+              Margin="15" 
+              ItemSelected="OnListViewItemSelected"
+              VerticalOptions="FillAndExpand"
+              HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                             <!--   <StackLayout HorizontalOptions="Center" VerticalOptions="FillAndExpand">
+                                        <Image Source="{Binding itemTypeImage}" >
+                                            <Image.HeightRequest>
+                                                <OnPlatform x:TypeArguments="x:Double">
+                                                    <On Platform="iOS">40</On>
+                                                    <On Platform="Android,Windows">40</On>
+                                                </OnPlatform>
+                                            </Image.HeightRequest>
+                                        </Image>
+                                    </StackLayout>  -->
+                                    <StackLayout>
+                                        <Image Source="{Binding ImageFileName}" 
+                                               WidthRequest="{OnPlatform iOS=100, Android=50}" 
+                                               HorizontalOptions="Center"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" 
+                                                 VerticalOptions="FillAndExpand">
+                                        <Label Text="{Binding ExpenseName}" TextColor="Black" FontSize="Medium"/>
+                                        <Label Text="{Binding DateOfPurchaseString}" TextColor="Black" 
+                                               FontSize="Medium" /> 
+                                    </StackLayout>
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand" 
+                                                 VerticalOptions="FillAndExpand">
+                                        <Label HorizontalOptions="EndAndExpand" 
+                                               Text="{Binding ExpenseAmount, StringFormat='{0:c}'}" 
+                                               TextColor="Black" FontSize="Medium"/>
+                                        <!-- <Label HorizontalOptions="EndAndExpand" Text="{Binding itemType}"
+                                        TextColor="Black" FontSize="Medium" /> -->
+                                </StackLayout>  
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        <Button Text="Add New" Clicked="OnAddingNewExpense"/>
+        </StackLayout>
+</ContentPage>

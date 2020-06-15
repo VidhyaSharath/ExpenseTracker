@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Monthly Expense Tracker"
+             x:Class="ExpTracker.ExpensesEntryPage">
+    
+  
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Margin="10,35,10,10">
+                <Label Text="Name" />
+                <Entry Text="{Binding ExpenseName}" />
+                <Label Text="Amount (in $)" />
+                <Entry Text="{Binding ExpenseAmount}" Keyboard="Numeric" />
+    
+                <Picker x:Name="picker" Title="Select a Category"  SelectedItem="{Binding SelectedType}"  HeightRequest="50">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>BillsandUtilities</x:String>
+                            <x:String>Entertainment</x:String>
+                            <x:String>FoodandDining</x:String>
+                            <x:String>Transport</x:String>
+                            <x:String>HealthCare</x:String>
+                            <x:String>Shopping</x:String>
+                            <x:String>PersonalCare</x:String>
+                            <x:String>Grocery</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                <DatePicker x:Name="SelectedDay"
+                 Date="{Binding DateOfPurchase}"
+                 Format="MM-dd-yyyy"/>
+                <!-- MaximumDate="{Binding MaximumDate}"
+                 MinimumDate="{Binding MinimumDate}"                 
+                 HeightRequest="50"/>  -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Text="Add"
+                    Clicked="OnSaveButtonClicked"/>
+                    <Button Grid.Column="1"
+                    Text="Cancel"
+                    Clicked="OnCancelButtonClicked"/>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
